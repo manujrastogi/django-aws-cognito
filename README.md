@@ -34,4 +34,4 @@ DEFAULT_CONFIG = {'region_name':DEFAULT_REGION_NAME,
                   'aws_access_key_id':AWS_ACCESS_KEY,
                   'aws_secret_access_key':AWS_SECRET_KEY}
 
-DEFAULT_USER_POOL_LOGIN_PROVIDER = 'cognito-idp.<REGION_NAME>.amazonaws.com/<DEFAULT_USER_POOL_ID>'
+DEFAULT_USER_POOL_LOGIN_PROVIDER = ''

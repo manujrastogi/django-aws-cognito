@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="google-signin-client_id" content="890338206985-v95cf4fu7b4lsmsa99d02i70395tmdhe.apps.googleusercontent.com">
+        <!-- font awesome from BootstrapCDN -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="/static/app.js"> </script>
+        <script>
+        function onSignIn(googleUser) {
+              console.log(googleUser);
+              console.log('Signed in as: ' + googleUser.getBasicProfile().getName());
+              var postData = {
+                  "token": googleUser['hg']['id_token'],
+                  "provider":  "accounts.google.com",
+                };
+               $.ajax({
+                url:'/api/public_provider_login/',
+                data:JSON.stringify(postData),
+                processData:false,
+                contentType:'application/json',
+                dataType:'json',
+                type:'POST',
+                success:function(res){
+                        console.log(res);
+                    }
+               });
+        };
+        </script>
+        <link href="/static/app.css" rel="stylesheet">
+    </head>
+    <body class="home">
+        <h1>Login with AWS Cognito Google Auth</h1>
+        <div class="container">
+            <div class="login-page clearfix">
+              <div class="login-box auth0-box before">
+                <h3>AWS Cognito Social Login Example1</h3>
+                <!--a class="btn btn-primary btn-lg btn-aws-cognito-login btn-block">SignIn</a-->
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+              </div>
+            </div>
+        </div>
+        <h1>Login with AWS Cognito Username Password</h1>
+        <div class="container">
+            <div class="login-page clearfix">
+              <div class="login-box auth0-box before">
+                <h3>AWS Cognito Example2</h3>
+                <input name="username" placeholder="username" 
+                                                id="username" type="text"/>
+                <input name="password" placeholder="password" 
+                                                id="password" type="password"/>
+                <a class="btn btn-primary btn-lg btn-login-username-password btn-block">SignIn</a>
+                <a class="btn btn-primary btn-lg btn-signup-username-password btn-block">SignUp</a>
+              </div>
+            </div>
+        </div>
+        <!--h1>Login with Sms Otp</h1>
+        <div class="container">
+            <div class="login-page clearfix">
+              <div class="login-box auth0-box before">
+                <img src="https://i.cloudup.com/StzWWrY34s.png" />
+                <h3>Auth0 Example3</h3>
+              <div>
+                <h5>Enter your otp here:</h5>
+                <input name="otp" id="otp" type="text"/>
+              </div>
+                <a class="btn btn-primary btn-lg btn-login-sms-otp btn-block">SignIn</a>
+              </div>
+              <div>
+                Enter your phone number here:<input name="phone_number" placeholder="in +91xxxxxxxx format" 
+                                                id="phone_number" type="text"/>
+                <a class="btn btn-primary btn-lg btn-login-get-sms-otp btn-block">Get OTP</a>  
+              </div>
+            </div>
+        </div-->
+    </body>
+</html>

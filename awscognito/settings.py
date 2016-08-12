@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
-
+from .local_settings import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -129,20 +129,6 @@ LOCAL_STATICFILES_DIRS = (
 STATICFILES_DIRS = LOCAL_STATICFILES_DIRS
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
-#AWS COGNITO CREDENTIALS
-IDENTITYPOOLID = 'ap-northeast-1:3a74e929-d4fa-4c7a-8b3c-840c618bf95b'
-ACCOUNTID = '164807658618'
-AWS_ACCESS_KEY = 'AKIAIWGERSFOFVAZIXOQ'
-AWS_SECRET_KEY = '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'
-DEFAULT_REGION_NAME = 'ap-northeast-1'
-DEFAULT_USER_POOL_ID = 'ap-northeast-1_urRQE86JV'
-DEFAULT_USER_POOL_APP_ID = '3ej7g5qejqsgmpgbt9ojo9amo7' #APP should not have any secret in AWS
-DEFAULT_CONFIG = {'region_name':DEFAULT_REGION_NAME,
-                  'aws_access_key_id':AWS_ACCESS_KEY,
-                  'aws_secret_access_key':AWS_SECRET_KEY}
-DEFAULT_USER_POOL_LOGIN_PROVIDER = 'cognito-idp.ap-northeast-1.amazonaws.com/ap-northeast-1_urRQE86JV'
-
 
 
 
